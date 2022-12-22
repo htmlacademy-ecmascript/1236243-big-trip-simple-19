@@ -1,7 +1,7 @@
 import {TYPE, CITIES, DESTINATION, TRIPS, OFFERS} from '../const.js'
 import {getRandomArrayElement} from '../utils.js'
 
-const mockTacks = [
+const mockTrip = [
     {
         base_price: 800,
         date_from: "2019-07-10T22:55:56.845Z",
@@ -31,4 +31,4 @@ const mockTacks = [
         }
 ]
 
-export {mockTacks}
+export {mockTrip}

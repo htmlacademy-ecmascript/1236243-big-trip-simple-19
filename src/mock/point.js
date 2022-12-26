@@ -13,7 +13,7 @@ const getMockPoints = () => {
             destination: getRandomArrayElement(CITIES),
             id: trip,
             type: getRandomArrayElement(TYPES),
-            offers: getRandomArrayElement(TITLE_OFFERS).offer
+            offers: mockOffers
         })
     )
 

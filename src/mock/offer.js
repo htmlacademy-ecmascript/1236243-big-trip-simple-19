@@ -21,4 +21,4 @@ const getMockOffers = function () {
 
 const mockOffers = getMockOffers()
 
-export {mockOffers}
+export { mockOffers }

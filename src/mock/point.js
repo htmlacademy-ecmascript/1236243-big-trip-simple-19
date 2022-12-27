@@ -14,7 +14,7 @@ const getMockPoints = () => {
       destination: getRandomArrayElement(CITIES),
       id: trip,
       type: randomType,
-      offers: findOfferByType(randomType).offers
+      offer: findOfferByType(randomType).offers
     };
     points.push(point);
   }
@@ -23,6 +23,6 @@ const getMockPoints = () => {
   return points;
 };
 
-const mockPoint = getMockPoints();
 
-export {mockPoint};
+
+export {getMockPoints};

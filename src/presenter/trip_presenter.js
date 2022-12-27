@@ -15,7 +15,7 @@ export default class TripPresenter {
 
   init() {
     render(new FiltersSortView(), this.tripContainer);
-    render(this.tripListComponent, this.tripContainer)
+    render(this.tripListComponent, this.tripContainer);
     render(new FormEditView(), this.tripListComponent.getElement());
 
     for (let i = 0; i < 3; i++) {

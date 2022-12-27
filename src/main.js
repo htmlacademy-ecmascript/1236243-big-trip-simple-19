@@ -1,8 +1,7 @@
 import FiltersView from './view/filters.js';
 import {render} from './render.js';
 import TripPresenter from './presenter/trip_presenter.js';
-import {getMockPoints} from '../src/mock/point.js'
-
+import {mockPoint} from '../src/mock/point.js';
 
 
 const siteElementTripFilters = document.querySelector('.trip-controls__filters');
@@ -12,4 +11,4 @@ const tripPresenter = new TripPresenter({tripContainer: siteElementTripsEvents})
 render(new FiltersView(), siteElementTripFilters);
 
 tripPresenter.init();
-console.log(getMockPoints())
+console.log(mockPoint);

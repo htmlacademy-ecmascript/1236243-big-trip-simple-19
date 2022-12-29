@@ -12,17 +12,19 @@ export default class TripPresenter {
   constructor ({tripContainer, pointsModel}) {
     this.tripContainer = tripContainer;
     this.pointsModel = pointsModel
+    
   }
 
   init() {
     this.boardPoints = [...this.pointsModel.getPoints()]
+    this.boardOffers = [...this.pointsModel.getOffers()]
 
     render(new FiltersSortView(), this.tripContainer);
     render(this.tripListComponent, this.tripContainer);
     render(new FormEditView(), this.tripListComponent.getElement());
 
     for (let i = 0; i < this.boardPoints.length; i++) {
-      render(new RoutePoint({point: this.boardPoints[i]}), this.tripListComponent.getElement());
+      render(new RoutePoint({point: this.boardPoints[i]}, {offer: this.boardOffers[i]}), this.tripListComponent.getElement());
     }
 
     render(new FormCreationView(), this.tripListComponent.getElement());

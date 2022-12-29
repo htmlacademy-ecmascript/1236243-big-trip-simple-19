@@ -14,15 +14,14 @@ const getMockPoints = () => {
       destination: getRandomArrayElement(CITIES),
       id: trip,
       type: randomType,
-      offer: findOfferByType(randomType).offers
+      offer: findOfferByType(randomType)
     };
     points.push(point);
   }
   );
-
+  console.log(points)
   return points;
 };
-
 
 
 export {getMockPoints};

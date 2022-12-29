@@ -1,9 +1,23 @@
 import {createElement} from '../render.js';
 
+const createOffers = (offer, type) => {
+  const newOfferArray = Array.from(offer)
+  const findOffer = newOfferArray.map(el => el.newOfferArray)
+  const offerByType = findOffer.find(el => el.type === type).offers // массив офферов по типу
+  for (let i = 0; i < offerByType.length; i++) {
+    return `<li class="event__offer">
+              <span class="event__offer-title">${offerByType[i].title}</span>
+              &plus;&euro;&nbsp;
+              <span class="event__offer-price">${offerByType[i].price}</span>
+            </li>`
+  }
+
+}
+
 function createRoutePoint (point) {
 // Извлекаем из объекта c описанием точки данные тех ключей, которыми мы можем воспользоваться
-  const {type, destination, basePrice, offers} = point
-
+  const {type, destination, basePrice, offer} = point
+  console.log(offer)
   return (`<li class="trip-events__item">
     <div class="event">
       <time class="event__date" datetime="2019-03-18">MAR 18</time>
@@ -23,11 +37,7 @@ function createRoutePoint (point) {
       </p>
       <h4 class="visually-hidden">Offers:</h4>
       <ul class="event__selected-offers">
-        <li class="event__offer">
-          <span class="event__offer-title">${offers}</span>
-          &plus;&euro;&nbsp;
-          <span class="event__offer-price">20</span>
-        </li>
+        ${createOffers(offer, type)}
       </ul>
       <button class="event__rollup-btn" type="button">
         <span class="visually-hidden">Open event</span>

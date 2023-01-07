@@ -9,20 +9,24 @@ import FormEditView from '../view/form_edit.js';
 export default class TripPresenter {
   tripListComponent = new TripListView();
 
-  constructor ({tripContainer}) {
+  constructor ({tripContainer, pointsModel}) {
     this.tripContainer = tripContainer;
+    this.pointsModel = pointsModel;
+
   }
 
   init() {
-    render(new FiltersSortView(), this.tripContainer);
-    render(new TripListView(), this.tripContainer);
-    render(this.tripListComponent, this.tripContainer);
-    render(new FormEditView(), this.tripListComponent.getElement());
+    this.boardPoints = [...this.pointsModel.getPoints()];
+    this.boardOffers = [...this.pointsModel.getOffers()];
 
-    for (let i = 0; i < 3; i++) {
-      render(new RoutePoint(), this.tripListComponent.getElement());
+    render(new FiltersSortView(), this.tripContainer);
+    render(this.tripListComponent, this.tripContainer);
+    render(new FormEditView({point: this.boardPoints[0]}, {offer: this.boardOffers[0]}), this.tripListComponent.getElement());
+
+    for (let i = 0; i < this.boardPoints.length; i++) {
+      render(new RoutePoint({point: this.boardPoints[i]}, {offer: this.boardOffers[i]}), this.tripListComponent.getElement());
     }
 
-    render(new FormCreationView(), this.tripListComponent.getElement());
+    render(new FormCreationView({point: this.boardPoints[2]}, {offer: this.boardOffers[2]}), this.tripListComponent.getElement());
   }
 }

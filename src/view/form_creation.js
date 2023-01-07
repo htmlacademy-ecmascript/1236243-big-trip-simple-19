@@ -2,10 +2,8 @@ import {createElement} from '../render.js';
 import {humanizeTripTimeEdit} from '../utils.js';
 import {mockDestinations} from '../mock/destination.js';
 
-const createDescription = (destination) =>{
-  return mockDestinations.find((el) => destination === el.name).description};
-const createDescriptionFoto = (destination) => {
-  return mockDestinations.find((el) => destination === el.name).pictures.src};
+const createDescription = (destination) => mockDestinations.find((el) => destination === el.name);
+
 
 
 const createAvaibleOffers = (offer) => {
@@ -131,11 +129,11 @@ function createFormCreation (point) {
 
         <section class="event__section  event__section--destination">
           <h3 class="event__section-title  event__section-title--destination">Destination</h3>
-          <p class="event__destination-description">${createDescription(destination)}</p>
+          <p class="event__destination-description">${createDescription(destination).description}</p>
 
           <div class="event__photos-container">
             <div class="event__photos-tape">
-              <img class="event__photo" src='${createDescriptionFoto(destination)}' alt="Event photo">
+              <img class="event__photo" src='${createDescription(destination).pictures.src}' alt="Event photo">
               
           </div>
         </section>

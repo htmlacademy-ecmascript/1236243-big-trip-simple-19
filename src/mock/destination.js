@@ -4,20 +4,35 @@ import { getRandomArrayElement } from '../utils.js';
 
 const getDestination = function () {
   const destination = [];
-  for (let i = 0; i < CITIES.length; i++) {
-    const mockDestination = {
-      id: i + 1,
-      description: getRandomArrayElement(DESCRIPTION),
-      name: getRandomArrayElement(CITIES),
-      pictures:
-        {
-          src: 'http://picsum.photos/300/200?r=Math.random()',
-          description: getRandomArrayElement(DESCRIPTION)
-        }
-    };
+  // for (let i = 0; i < CITIES.length; i++) {
+  //   const mockDestination = {
+  //     id: i + 1,
+  //     description: getRandomArrayElement(DESCRIPTION),
+  //     name: getRandomArrayElement(CITIES),
+  //     pictures:
+  //       {
+  //         src: 'http://picsum.photos/300/200?r=Math.random()',
+  //         description: getRandomArrayElement(DESCRIPTION)
+  //       }
+  //   };
 
-    destination.push(mockDestination);
-  }
+  //   destination.push(mockDestination);
+  // }
+  CITIES.forEach((el) => {
+    const mockDestination = {
+          // id: el[i],
+          description: getRandomArrayElement(DESCRIPTION),
+          name: el,
+          pictures:
+            {
+              src: 'http://picsum.photos/300/200?r=Math.random()',
+              description: getRandomArrayElement(DESCRIPTION)
+            }
+        };
+    
+        destination.push(mockDestination);
+  })
+  console.log(destination)
   return destination;
 };
 

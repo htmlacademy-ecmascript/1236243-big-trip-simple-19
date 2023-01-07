@@ -19,7 +19,7 @@ const createAvaibleOffers = (offer) => {
       </label>
       </div>`);
   }
-  return avaibleOffers;
+  return avaibleOffers.join('');
 };
 
 function createFormEdit (point) {

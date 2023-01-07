@@ -5,7 +5,6 @@ import {mockDestinations} from '../mock/destination.js';
 const createDescription = (destination) => mockDestinations.find((el) => destination === el.name);
 
 
-
 const createAvaibleOffers = (offer) => {
   const offerByType = offer.offers;
   const avaibleOffers = [];
@@ -19,7 +18,7 @@ const createAvaibleOffers = (offer) => {
       </label>
       </div>`);
   }
-  return avaibleOffers;
+  return avaibleOffers.join('');
 };
 
 function createFormCreation (point) {

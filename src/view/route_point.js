@@ -15,6 +15,7 @@ const createOffers = (offer) => {
   }
 
   return offersArray.join('');
+
 };
 
 function createRoutePoint (point) {

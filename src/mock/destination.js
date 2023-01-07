@@ -20,19 +20,17 @@ const getDestination = function () {
   // }
   CITIES.forEach((el, i) => {
     const mockDestination = {
-          id: i + 1,
-          description: getRandomArrayElement(DESCRIPTION),
-          name: el,
-          pictures:
+      id: i + 1,
+      description: getRandomArrayElement(DESCRIPTION),
+      name: el,
+      pictures:
             {
               src: 'http://picsum.photos/300/200?r=Math.random()',
               description: getRandomArrayElement(DESCRIPTION)
             }
-        };
-    
-        destination.push(mockDestination);
-  })
-  console.log(destination)
+    };
+    destination.push(mockDestination);
+  });
   return destination;
 };
 

@@ -2,8 +2,10 @@ import {createElement} from '../render.js';
 import {humanizeTripTimeEdit} from '../utils.js';
 import {mockDestinations} from '../mock/destination.js';
 
-const createDescription = (destination) => mockDestinations.find((el) => destination === el.name).description;
-const createDescriptionFoto = (destination) => mockDestinations.find((el) => destination === el.name).pictures.src;
+const createDescription = (destination) =>{
+  return mockDestinations.find((el) => destination === el.name).description};
+const createDescriptionFoto = (destination) => {
+  return mockDestinations.find((el) => destination === el.name).pictures.src};
 
 
 const createAvaibleOffers = (offer) => {

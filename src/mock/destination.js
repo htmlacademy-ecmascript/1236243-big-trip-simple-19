@@ -18,9 +18,9 @@ const getDestination = function () {
 
   //   destination.push(mockDestination);
   // }
-  CITIES.forEach((el) => {
+  CITIES.forEach((el, i) => {
     const mockDestination = {
-          // id: el[i],
+          id: i + 1,
           description: getRandomArrayElement(DESCRIPTION),
           name: el,
           pictures:

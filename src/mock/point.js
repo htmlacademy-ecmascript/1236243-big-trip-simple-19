@@ -19,7 +19,7 @@ const getMockPoints = () => {
     points.push(point);
   }
   );
-  console.log(points)
+
   return points;
 };
 

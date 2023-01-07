@@ -6,10 +6,10 @@ import PointsModel from './model/point_model.js';
 
 const siteElementTripFilters = document.querySelector('.trip-controls__filters');
 const siteElementTripsEvents = document.querySelector('.trip-events');
-const pointsModel = new PointsModel()
+const pointsModel = new PointsModel();
 const tripPresenter = new TripPresenter({
-    tripContainer: siteElementTripsEvents,
-    pointsModel,
+  tripContainer: siteElementTripsEvents,
+  pointsModel,
 });
 
 render(new FiltersView(), siteElementTripFilters);

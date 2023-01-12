@@ -27,6 +27,11 @@ export default class TripPresenter {
     this.#boardOffers = [...this.#pointsModel.offers];
 
     render(new FiltersSortView(), this.#tripContainer);
+    this.#renderContainer();
+
+  }
+
+  #renderContainer () {
     render(this.#tripListComponent, this.#tripContainer);
 
     if (this.#boardPoints.length > 0) {
@@ -36,7 +41,6 @@ export default class TripPresenter {
     } else {
       render(new ListEmpty(), this.#tripContainer);
     }
-
   }
 
   #renderTrip(point, offer) {

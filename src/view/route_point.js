@@ -51,22 +51,25 @@ function createRoutePoint (point) {
 }
 
 export default class RoutePoint {
+  #point = null;
+  #element = null;
+
   constructor({point}) {
-    this.point = point; // получаем данные точки и сохраняем во внутрь вьюхи
+    this.#point = point; // получаем данные точки и сохраняем во внутрь вьюхи
   }
 
-  getTemplate () {
-    return createRoutePoint(this.point);
+  get template () {
+    return createRoutePoint(this.#point);
   }
 
-  getElement() {
-    if(!this.element) {
-      this.element = createElement(this.getTemplate());
+  get element() {
+    if(!this.#element) {
+      this.#element = createElement(this.template);
     }
-    return this.element;
+    return this.#element;
   }
 
   removeElement () {
-    this.element = null;
+    this.#element = null;
   }
 }

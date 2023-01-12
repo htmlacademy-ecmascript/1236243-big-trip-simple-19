@@ -5,11 +5,11 @@ export default class PointsModel {
 
   #offers = this.#points.map((el) => el.offer.offers);
 
-  getPoints() {
+  get points() {
     return this.#points;
   }
 
-  getOffers() {
+  get offers() {
     return this.#offers;
   }
 }

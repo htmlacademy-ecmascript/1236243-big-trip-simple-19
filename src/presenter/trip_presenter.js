@@ -2,6 +2,7 @@ import { render } from '../render.js';
 import FiltersSortView from '../view/filters_sort.js';
 import TripListView from '../view/trip_view_list.js';
 import RoutePoint from '../view/route_point.js';
+import ListEmpty from '../view/list_empty.js';
 // import FormCreationView from '../view/form_creation.js';
 import FormEditView from '../view/form_edit.js';
 
@@ -26,12 +27,20 @@ export default class TripPresenter {
     this.#boardOffers = [...this.#pointsModel.offers];
 
     render(new FiltersSortView(), this.#tripContainer);
+    this.#renderContainer();
+
+  }
+
+  #renderContainer () {
     render(this.#tripListComponent, this.#tripContainer);
 
-    for (let i = 0; i < this.#boardPoints.length; i++) {
-      this.#renderTrip(this.#boardPoints[i], this.#boardOffers[i]);
+    if (this.#boardPoints.length > 0) {
+      for (let i = 0; i < this.#boardPoints.length; i++) {
+        this.#renderTrip(this.#boardPoints[i], this.#boardOffers[i]);
+      }
+    } else {
+      render(new ListEmpty(), this.#tripContainer);
     }
-
   }
 
   #renderTrip(point, offer) {

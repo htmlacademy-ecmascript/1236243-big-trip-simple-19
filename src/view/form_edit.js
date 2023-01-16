@@ -1,5 +1,5 @@
 import AbstractView from '../framework/view/abstract-view.js';
-import {humanizeTripTimeEdit} from '../utils.js';
+import {humanizeTripTimeEdit} from '../util/utils.js';
 import {mockDestinations} from '../mock/destination.js';
 
 

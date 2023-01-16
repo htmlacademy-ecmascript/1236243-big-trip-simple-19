@@ -20,5 +20,10 @@ const TITLE_OFFERS = [
   'Travel by train'
 ];
 
+const FilterType = {
+  ALL: 'everything',
+  FUTURE: 'future'
+};
 
-export {TYPES, CITIES, DESCRIPTION, TRIPS, TITLE_OFFERS};
+
+export {TYPES, CITIES, DESCRIPTION, TRIPS, TITLE_OFFERS, FilterType};

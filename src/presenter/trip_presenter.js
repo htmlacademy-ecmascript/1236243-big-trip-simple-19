@@ -1,4 +1,4 @@
-import { render } from '../framework/render.js';
+import { render, replace} from '../framework/render.js';
 import FiltersSortView from '../view/filters_sort.js';
 import TripListView from '../view/trip_view_list.js';
 import RoutePoint from '../view/route_point.js';
@@ -71,11 +71,11 @@ export default class TripPresenter {
     });
 
     function replaceTripToEdit () {
-      this.#tripListComponent.element.replaceChild(tripEditComponent.element, tripComponent.element);
+      replace(tripEditComponent, tripComponent);
     }
 
     function replaceEditToTrip () {
-      this.#tripListComponent.element.replaceChild(tripComponent.element, tripEditComponent.element);
+      replace(tripComponent, tripEditComponent);
     }
 
 

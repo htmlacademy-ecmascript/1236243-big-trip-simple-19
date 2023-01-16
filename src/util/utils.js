@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 
 const DATE_FORMAT = 'MMM D';
 const TIME_FORMAT = 'HH:MM';
-const EDIT_FORMAT = 'DD/MM/YY HH:mm';
+const EDIT_FORMAT = 'D/MM/YY HH:mm';
 
 function getRandomArrayElement(items) {
   return items[Math.floor(Math.random() * items.length)];
@@ -39,5 +39,9 @@ function humanizeTripTimeEdit (date) {
   return date ? dayjs(date).format(EDIT_FORMAT) : '';
 }
 
+function isFutureTrip (date) {
+  return date && dayjs().isAfter(date, 'D');
+}
 
-export {getRandomArrayElement, getRandomNumber, humanizeTripDay, humanizeTripTime, humanizeTripTimeEdit};
+
+export {getRandomArrayElement, getRandomNumber, humanizeTripDay, humanizeTripTime, humanizeTripTimeEdit, isFutureTrip};

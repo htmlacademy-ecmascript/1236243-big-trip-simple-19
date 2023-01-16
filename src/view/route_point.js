@@ -1,5 +1,5 @@
 import AbstractView from '../framework/view/abstract-view.js';
-import {humanizeTripDay, humanizeTripTime} from '../utils.js';
+import {humanizeTripDay, humanizeTripTime} from '../util/utils.js';
 
 const createOffers = (offer) => {
 

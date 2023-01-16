@@ -1,4 +1,4 @@
-import {createElement} from '../render.js';
+import AbstractView from '../framework/view/abstract-view.js';
 import {humanizeTripTimeEdit} from '../utils.js';
 import {mockDestinations} from '../mock/destination.js';
 
@@ -141,28 +141,15 @@ function createFormCreation (point) {
   </li>`);
 }
 
-export default class FormCreationView {
-
+export default class FormCreationView extends AbstractView{
   #point = null;
-  #element = null;
 
   constructor ({point}) {
+    super();
     this.#point = point;
   }
 
   get template () {
     return createFormCreation(this.#point);
-  }
-
-  get element () {
-    if(!this.#element) {
-      this.#element = createElement(this.template);
-    }
-
-    return this.#element;
-  }
-
-  removeElement () {
-    this.#element = null;
   }
 }

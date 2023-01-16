@@ -1,4 +1,4 @@
-import {createElement} from '../render.js';
+import AbstractView from '../framework/view/abstract-view.js';
 import {humanizeTripTimeEdit} from '../utils.js';
 import {mockDestinations} from '../mock/destination.js';
 
@@ -140,26 +140,23 @@ function createFormEdit (point) {
   </li>`);
 }
 
-export default class FormEditView {
+export default class FormEditView extends AbstractView{
   #point = null;
-  #element = null;
+  #handelOnFormSubmit = null;
 
-  constructor ({point}) {
+  constructor ({point, onFormSumbit}) {
+    super();
     this.#point = point;
+    this.#handelOnFormSubmit = onFormSumbit;
+    this.element.querySelector('form').addEventListener('submit', this.#formSubmitHandler);
   }
 
   get template () {
     return createFormEdit(this.#point);
   }
 
-  get element () {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-    return this.#element;
-  }
-
-  removeElement () {
-    this.#element = null;
-  }
+  #formSubmitHandler = (evt) => {
+    evt.preventDefault();
+    this.#handelOnFormSubmit();
+  };
 }

@@ -40,7 +40,7 @@ function humanizeTripTimeEdit (date) {
 }
 
 function isFutureTrip (date) {
-  return date && dayjs().isAfter(date, 'D');
+  return date && dayjs().isBefore(date);
 }
 
 

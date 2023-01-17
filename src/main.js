@@ -12,6 +12,7 @@ const tripPresenter = new TripPresenter({
   tripContainer: siteElementTripsEvents,
   pointsModel,
 });
+
 const filters = generateFilters(pointsModel.points);
 
 

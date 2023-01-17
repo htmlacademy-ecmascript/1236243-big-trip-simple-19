@@ -1,4 +1,4 @@
-import { render } from '../render.js';
+import { render, replace} from '../framework/render.js';
 import FiltersSortView from '../view/filters_sort.js';
 import TripListView from '../view/trip_view_list.js';
 import RoutePoint from '../view/route_point.js';
@@ -44,35 +44,39 @@ export default class TripPresenter {
   }
 
   #renderTrip(point, offer) {
-    const tripComponent = new RoutePoint({point, offer});
-    const tripEditComponent = new FormEditView({point, offer});
-
-    const replaceTripToEdit = () => {
-      this.#tripListComponent.element.replaceChild(tripEditComponent.element, tripComponent.element);
-    };
-
-    const replaceEditToTrip = () => {
-      this.#tripListComponent.element.replaceChild(tripComponent.element, tripEditComponent.element);
-    };
 
     const escKeyDownHandler = (evt) => {
       if (evt.key === 'Escape' || evt.key === 'Esc') {
         evt.preventDefault();
-        replaceEditToTrip();
+        replaceEditToTrip.call(this);
         document.removeEventListener('keydown', escKeyDownHandler);
       }
     };
 
-    tripComponent.element.querySelector('.event__rollup-btn').addEventListener('click', ()=> {
-      replaceTripToEdit();
-      document.addEventListener('keydown', escKeyDownHandler);
+    const tripComponent = new RoutePoint({
+      point,
+      offer,
+      onEditClick: () => {
+        replaceTripToEdit.call(this);
+        document.addEventListener('keydown', escKeyDownHandler);
+      }
+    });
+    const tripEditComponent = new FormEditView({
+      point,
+      offer,
+      onFormSumbit: () => {
+        replaceEditToTrip.call(this);
+        document.removeEventListener('keydown', escKeyDownHandler);
+      }
     });
 
-    tripEditComponent.element.querySelector('form').addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      replaceEditToTrip();
-      document.removeEventListener('keydown', escKeyDownHandler);
-    });
+    function replaceTripToEdit () {
+      replace(tripEditComponent, tripComponent);
+    }
+
+    function replaceEditToTrip () {
+      replace(tripComponent, tripEditComponent);
+    }
 
 
     render(tripComponent, this.#tripListComponent.element);

@@ -1,5 +1,5 @@
-import {createElement} from '../render.js';
-import {humanizeTripDay, humanizeTripTime} from '../utils.js';
+import AbstractView from '../framework/view/abstract-view.js';
+import {humanizeTripDay, humanizeTripTime} from '../util/utils.js';
 
 const createOffers = (offer) => {
 
@@ -50,26 +50,23 @@ function createRoutePoint (point) {
   </li>`);
 }
 
-export default class RoutePoint {
+export default class RoutePoint extends AbstractView{
   #point = null;
-  #element = null;
+  #handleEditClick = null;
 
-  constructor({point}) {
+  constructor({point, onEditClick}) {
+    super();
     this.#point = point; // получаем данные точки и сохраняем во внутрь вьюхи
+    this.#handleEditClick = onEditClick;
+    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#editClickHandler);
   }
 
   get template () {
     return createRoutePoint(this.#point);
   }
 
-  get element() {
-    if(!this.#element) {
-      this.#element = createElement(this.template);
-    }
-    return this.#element;
-  }
-
-  removeElement () {
-    this.#element = null;
-  }
+  #editClickHandler = (evt) => {
+    evt.preventDefault();
+    this.#handleEditClick();
+  };
 }

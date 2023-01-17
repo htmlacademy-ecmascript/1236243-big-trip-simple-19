@@ -1,4 +1,4 @@
-import {getRandomArrayElement, getRandomNumber} from '../utils.js';
+import {getRandomArrayElement, getRandomNumber} from '../util/utils.js';
 import {TYPES, TITLE_OFFERS} from '../const.js';
 
 

@@ -11,7 +11,6 @@ function createFilterItemTemplate (filter, isChecked) {
 
 
 function createFiltersTemplate (filterItems) {
-  
   const filtersItemsTemplate = filterItems
     .map((filter, index) => createFilterItemTemplate(filter, index === 0))
     .join('');

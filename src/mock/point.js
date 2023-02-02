@@ -1,7 +1,7 @@
 import {TYPES, CITIES, TRIPS} from '../const.js';
 import {getRandomArrayElement, getRandomNumber} from '../util/utils.js';
 import {findOfferByType} from './offer.js';
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
 
 
 function getRandomDate () {
@@ -17,7 +17,7 @@ function getRandomDate () {
 
 const getMockPoints = () => {
   const points = [];
-  for (let i = 0; i < TRIPS; i++)  {
+  for (let i = 0; i < TRIPS; i++) {
     const randomType = getRandomArrayElement(TYPES);
     const point = {
       basePrice: getRandomNumber(500, 1500),
@@ -30,7 +30,7 @@ const getMockPoints = () => {
     };
     points.push(point);
   }
-  ;
+
 
   return points;
 };

@@ -44,7 +44,7 @@ function isFutureTrip (date) {
 }
 
 function updateItem(items, update) {
-  return items.map((item) => item.id === update.id ? update : item)
+  return items.map((item) => item.id === update.id ? update : item);
 }
 
 

@@ -17,7 +17,7 @@ function getRandomDate () {
 
 const getMockPoints = () => {
   const points = [];
-  TRIPS.forEach((trip) => {
+  for (let i = 0; i < TRIPS; i++)  {
     const randomType = getRandomArrayElement(TYPES);
     const point = {
       basePrice: getRandomNumber(500, 1500),
@@ -30,7 +30,7 @@ const getMockPoints = () => {
     };
     points.push(point);
   }
-  );
+  ;
 
   return points;
 };

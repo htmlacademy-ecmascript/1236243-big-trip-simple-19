@@ -3,6 +3,9 @@ import FiltersSortView from '../view/filters_sort.js';
 import TripListView from '../view/trip_view_list.js';
 import ListEmpty from '../view/list_empty.js';
 import PointPresenter from './point_presenter.js';
+import { updateItem } from '../util/utils.js'
+
+
 
 
 export default class TripPresenter {
@@ -13,6 +16,7 @@ export default class TripPresenter {
   #noListComponent = new ListEmpty()
   #boardPoints = [];
   #boardOffers = [];
+  #tripPresenters = new Map()
 
   constructor ({tripContainer, pointsModel}) {
     this.#tripContainer = tripContainer;
@@ -43,8 +47,20 @@ export default class TripPresenter {
 
   #renderTrip(point) {
     const pointPresenter = new PointPresenter({
-      tripListComponent: this.#tripListComponent.element
+      tripListComponent: this.#tripListComponent.element,
+      onDataChange: this.#handleTripChange, 
+      onModeChange: this.#handleModeChange
     })
     pointPresenter.init(point)
+    this.#tripPresenters.set(point.id, pointPresenter) // сохраняеем экземпляры класса 
+  }
+
+  #handleTripChange = (updatePoint) => {
+    this.#boardPoints = updateItem(this.#boardPoints, updatePoint)
+    this.#tripPresenters.get(updatePoint.id).init(updatePoint)
+  }
+
+  #handleModeChange = () => {
+    this.#tripPresenters.forEach((presenter) => presenter.resetView())
   }
 }

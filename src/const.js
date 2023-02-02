@@ -1,4 +1,4 @@
-const TRIPS = [1, 2, 3];
+const TRIPS = 3;
 
 const TYPES = ['taxi', 'bus', 'train', 'ship', 'drive', 'flight', 'check-in', 'sightseeing', 'restaurant'];
 

@@ -43,5 +43,9 @@ function isFutureTrip (date) {
   return date && dayjs().isBefore(date);
 }
 
+function updateItem(items, update) {
+  return items.map((item) => item.id === update.id ? update : item)
+}
 
-export {getRandomArrayElement, getRandomNumber, humanizeTripDay, humanizeTripTime, humanizeTripTimeEdit, isFutureTrip};
+
+export {getRandomArrayElement, getRandomNumber, humanizeTripDay, humanizeTripTime, humanizeTripTimeEdit, isFutureTrip, updateItem};

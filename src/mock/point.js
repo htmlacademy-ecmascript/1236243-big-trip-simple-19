@@ -1,6 +1,7 @@
 import {TYPES, CITIES, TRIPS} from '../const.js';
 import {getRandomArrayElement, getRandomNumber} from '../util/utils.js';
 import {findOfferByType} from './offer.js';
+import { nanoid } from 'nanoid'
 
 
 function getRandomDate () {
@@ -23,7 +24,7 @@ const getMockPoints = () => {
       dateFrom: getRandomDate(),
       dateTo: getRandomDate(),
       destination: getRandomArrayElement(CITIES),
-      id: trip,
+      id: nanoid(),
       type: randomType,
       offer: findOfferByType(randomType)
     };

@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "dayjs": "1.11.7",
-    "days": "1.1.1"
+    "days": "1.1.1",
+    "nanoid": "4.0.0"
   }
 }

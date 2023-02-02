@@ -12,7 +12,7 @@ const tripPresenter = new TripPresenter({
   tripContainer: siteElementTripsEvents,
   pointsModel,
 });
-
+console.log(pointsModel)
 const filters = generateFilters(pointsModel.points);
 
 

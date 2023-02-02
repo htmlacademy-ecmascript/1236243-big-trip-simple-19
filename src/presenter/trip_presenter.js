@@ -1,10 +1,8 @@
-import { render, replace} from '../framework/render.js';
+import { RenderPosition, render, replace, remove} from '../framework/render.js';
 import FiltersSortView from '../view/filters_sort.js';
 import TripListView from '../view/trip_view_list.js';
-import RoutePoint from '../view/route_point.js';
 import ListEmpty from '../view/list_empty.js';
-// import FormCreationView from '../view/form_creation.js';
-import FormEditView from '../view/form_edit.js';
+import PointPresenter from './point_presenter.js';
 
 
 export default class TripPresenter {
@@ -12,7 +10,7 @@ export default class TripPresenter {
 
   #tripContainer = null;
   #pointsModel = null;
-
+  #noListComponent = new ListEmpty()
   #boardPoints = [];
   #boardOffers = [];
 
@@ -39,46 +37,14 @@ export default class TripPresenter {
         this.#renderTrip(this.#boardPoints[i], this.#boardOffers[i]);
       }
     } else {
-      render(new ListEmpty(), this.#tripContainer);
+      render(this.#noListComponent, this.#tripContainer);
     }
   }
 
-  #renderTrip(point, offer) {
-
-    const escKeyDownHandler = (evt) => {
-      if (evt.key === 'Escape' || evt.key === 'Esc') {
-        evt.preventDefault();
-        replaceEditToTrip.call(this);
-        document.removeEventListener('keydown', escKeyDownHandler);
-      }
-    };
-
-    const tripComponent = new RoutePoint({
-      point,
-      offer,
-      onEditClick: () => {
-        replaceTripToEdit.call(this);
-        document.addEventListener('keydown', escKeyDownHandler);
-      }
-    });
-    const tripEditComponent = new FormEditView({
-      point,
-      offer,
-      onFormSumbit: () => {
-        replaceEditToTrip.call(this);
-        document.removeEventListener('keydown', escKeyDownHandler);
-      }
-    });
-
-    function replaceTripToEdit () {
-      replace(tripEditComponent, tripComponent);
-    }
-
-    function replaceEditToTrip () {
-      replace(tripComponent, tripEditComponent);
-    }
-
-
-    render(tripComponent, this.#tripListComponent.element);
+  #renderTrip(point) {
+    const pointPresenter = new PointPresenter({
+      tripListComponent: this.#tripListComponent.element
+    })
+    pointPresenter.init(point)
   }
 }

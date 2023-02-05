@@ -157,6 +157,6 @@ export default class FormEditView extends AbstractView{
 
   #formSubmitHandler = (evt) => {
     evt.preventDefault();
-    this.#handelOnFormSubmit();
+    this.#handelOnFormSubmit(this.#point);
   };
 }
